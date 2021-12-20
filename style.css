@@ -154,6 +154,7 @@ h3{
     background-size: contain;
     margin-right: 10px;
     padding: 30px;
+    overflow-y: auto;
 }
 .message{
     height: 50px;
@@ -200,4 +201,21 @@ h3{
     position: absolute;
     bottom: 4%;
     right: 4%;
+}
+.new-chat{
+    border: none;
+    width: 80%;
+    padding: 5px 15px;
+}
+.new-chat:focus-within{
+    border-radius: 10px;
+}
+.new-mex{
+    border: none;
+    width: 80%;
+    padding: 5px 15px;
+    background-color: #eaeaea;
+}
+.new-mex:focus-within{
+    border-radius: 10px;
 }
