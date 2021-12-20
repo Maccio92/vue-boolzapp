@@ -41,17 +41,16 @@
                     </div>
 
                     <ul class="users">
-                        <!-- 1° Chat -->
                         <li v-for="(element, index) in contacts" class="user-chat">
                             <div class="user">
-                                <img class="chat-thumb" :src="`img/avatar{element.avatar}`" alt="Avatar Michele">
+                                <img class="chat-thumb" :src="`img/avatar${element.avatar}.jpg`" alt="Avatar Michele">
                                 <div class="name">
                                     <h3>{{element.name}}</h3>
-                                    <p class="preview">ok...</p>
+                                    <p  class="preview">{{element.messages[2].text}}</p>
                                 </div>
                             </div>
                             <div class="date">
-                                <span class="preview">{{element.date}}</span>
+                                <span class="preview">{{element.messages[0].date}}</span>
                             </div>
                         </li>
                     </ul>
