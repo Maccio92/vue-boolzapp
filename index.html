@@ -5,12 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
     <header class="header"></header>
-    <main class="main">
+    <main class="main" id="app">
         <div class="main-container">
             <div class="left-container">
                 <div class="left-header">
@@ -38,60 +39,23 @@
                         <i class="fas fa-search search-icon"></i>
                         <span class="search-text">Cerca o inizia nuova chat</span>
                     </div>
+
                     <ul class="users">
                         <!-- 1° Chat -->
-                        <li class="user-chat">
+                        <li v-for="(element, index) in contacts" class="user-chat">
                             <div class="user">
-                                <img class="chat-thumb" src="img/avatar_1.jpg" alt="Avatar Michele">
+                                <img class="chat-thumb" :src="`img/avatar{element.avatar}`" alt="Avatar Michele">
                                 <div class="name">
-                                    <h3>Michele</h3>
+                                    <h3>{{element.name}}</h3>
                                     <p class="preview">ok...</p>
                                 </div>
                             </div>
                             <div class="date">
-                                <span class="preview"> 20 12 2021 10:22:21</span>
-                            </div>
-                        </li>
-                        <!-- 2° Chat -->
-                        <li class="user-chat">
-                            <div class="user">
-                                <img class="chat-thumb" src="img/avatar_2.jpg" alt="Avatar Michele">
-                                <div class="name">
-                                    <h3>Fabio</h3>
-                                    <p class="preview">Mi piacerebbe ma devo andare a...</p>
-                                </div>
-                            </div>
-                            <div class="date">
-                                <span class="preview"> 20 03 2020 16:35:00</span>
-                            </div>
-                        </li>
-                        <!-- 3° Chat -->
-                        <li class="user-chat selected">
-                            <div class="user">
-                                <img class="chat-thumb" src="img/avatar_3.jpg" alt="Avatar Michele">
-                                <div class="name">
-                                    <h3>Samuele</h3>
-                                    <p class="preview">Ah scusa!...</p>
-                                </div>
-                            </div>
-                            <div class="date">
-                                <span class="preview"> 28 03 2020 16:15:22</span>
-                            </div>
-                        </li>
-                        <!-- 4° Chat -->
-                        <li class="user-chat">
-                            <div class="user">
-                                <img class="chat-thumb" src="img/avatar_4.jpg" alt="Avatar Michele">
-                                <div class="name">
-                                    <h3>Luisa</h3>
-                                    <p class="preview">Si, ma preferirei andare al ci...</p>
-                                </div>
-                            </div>
-                            <div class="date">
-                                <span class="preview"> 10 01 2020 15:50:00</span>
+                                <span class="preview">{{element.date}}</span>
                             </div>
                         </li>
                     </ul>
+
                 </div>
             </div>
 
