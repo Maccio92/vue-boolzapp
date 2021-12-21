@@ -14,7 +14,7 @@
     <main class="main" id="app">
         <div class="main-container">
             <div class="left-container">
-                <div class="left-header">
+                <div class="col-header">
                     <div class="main-user">
                         <img class="thumb" src="img/avatar_io.jpg" alt="Immagine dell'utente">
                         <p>Nome Utente</p>
@@ -25,8 +25,8 @@
                         <i class="nav-icon fas fa-ellipsis-v"></i>
                     </div>
                 </div>
-                <div class="notification">
-                    <div class="circle-background">
+                <div class="notification d-flex">
+                    <div class="circle-background d-flex">
                         <i class=" bell fas fa-bell-slash"></i>
                     </div>
                     <div>
@@ -35,22 +35,22 @@
                     </div>
                 </div>
                 <div class="chats">
-                    <div class="search-chat">
+                    <div class="search-chat d-flex">
                         <i class="fas fa-search search-icon"></i>
-                        <input class="new-chat" type="text" placeholder="Cerca o inizia nuova chat">
+                        <input class="new" type="text" placeholder="Cerca o inizia nuova chat">
                     </div>
 
                     <ul class="users">
-                        <li v-for="(element, index) in contacts" class="user-chat">
+                        <li @click = "change(index)" v-for="(element, index) in contacts" class="user-chat d-flex">
                             <div class="user">
-                                <img class="chat-thumb" :src="`img/avatar${element.avatar}.jpg`" alt="Avatar Michele">
+                                <img class="thumb" :src="`img/avatar${element.avatar}.jpg`" alt="Avatar Michele">
                                 <div class="name">
                                     <h3>{{element.name}}</h3>
-                                    <p  class="preview">{{element.messages[2].text}}</p>
+                                    <p  class="preview">{{element.messages[element.messages.length - 1].text}}</p>
                                 </div>
                             </div>
                             <div class="date">
-                                <span class="preview">{{element.messages[0].date}}</span>
+                                <span class="preview">{{element.messages[element.messages.length - 1].date}}</span>
                             </div>
                         </li>
                     </ul>
@@ -59,12 +59,12 @@
             </div>
 
             <div class="right-container">
-                <div class="chat-header">
+                <div class="col-header">
                     <div class="main-user">
-                        <img class="thumb" src="img/avatar_3.jpg" alt="Immagine dell'utente">
+                        <img class="thumb" :src="`img/avatar${contacts[contatore].avatar}.jpg`" alt="Immagine dell'utente">
                         <div>
-                            <p>Samuele</p>
-                            <p class="access">Ultimo accesso 28/03/2020 16:15:22</p>
+                            <p>{{contacts.name}}</p>
+                            <p class="access">Ultimo accesso {{contacts[contatore].messages[contatore].date}}</p>
                         </div>
                     </div>
                     <div class="nav">
@@ -74,28 +74,19 @@
                     </div>
                 </div>
                 <div class="conversation">
-                    <div class="receveid-message">
-                        <div class="mex">
-                            <p class="mex-text">La Marianna va in campagna</p>
-                            <p class="when">28/03/2020 10:10:40</p>
-                        </div>
-                    </div>
-                    <div class="sent-message">
-                        <div class="my-mex">
-                            <p class="mex-text">Sicuro di non aver sbagliato chat</p>
-                            <p class="when">28/03/2020 10:20:10</p>
-                        </div>
-                    </div>
-                    <div class="receveid-message">
-                        <div class="mex">
-                            <p class="mex-text">Ah scusa!</p>
-                            <p class="when">28/03/2020 16:15:22</p>
-                        </div>
-                    </div>
+                    <ul>
+                        <li  :class="(message.status == 'received') ? 'received-message ' : 'sent-message' "
+                        v-for="message in contacts[contatore].messages">
+                            <div :class="(message.status == 'received') ? 'mex' : 'my-mex' " >
+                                <p class="mex-text">{{message.text}}</p>
+                                <p class="when">{{message.date}}</p>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="message">
+                <div class="message d-flex">
                     <i class="far fa-smile"></i>
-                    <input class="new-mex" type="text" placeholder="Scrivi un messaggio">
+                    <input class="new new-mex" type="text" placeholder="Scrivi un messaggio">
                     <i class="fas fa-microphone"></i>
                 </div>
             </div>
