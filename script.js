@@ -108,7 +108,6 @@ methods: {
     console.log(this.contatore);
     
   },
-
   }
 }
 
