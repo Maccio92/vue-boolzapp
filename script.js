@@ -93,11 +93,11 @@ contacts: [
           text: "Si, ma preferirei andare al cinema",
           status: "received",
         },
-        {
-          date: "10/01/2020 16:50:00",
-          text: "Va bene, andiamo al cinema",
-          status: "received",
-        }
+        // {
+        //   date: "10/01/2020 16:50:00",
+        //   text: "Va bene, andiamo al cinema",
+        //   status: "received",
+        // }
       ],
     },
   ],
@@ -108,8 +108,8 @@ methods: {
     console.log(this.contatore);
     
   },
-  },
+
+  }
 }
 
   )
-  
