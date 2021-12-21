@@ -41,16 +41,16 @@
                     </div>
 
                     <ul class="users">
-                        <li @click = "change(index)" v-for="(element, index) in contacts" class="user-chat d-flex">
+                        <li @click="change(index)" v-for="(contact, index) in contacts" class="user-chat d-flex">
                             <div class="user">
-                                <img class="thumb" :src="`img/avatar${element.avatar}.jpg`" alt="Avatar Michele">
+                                <img class="thumb" :src="`img/avatar${contact.avatar}.jpg`" alt="Avatar Michele">
                                 <div class="name">
-                                    <h3>{{element.name}}</h3>
-                                    <p  class="preview">{{element.messages[element.messages.length - 1].text}}</p>
+                                    <h3>{{contact.name}}</h3>
+                                    <p  class="preview">{{contact.messages[contact.messages.length - 1].text}}</p>
                                 </div>
                             </div>
                             <div class="date">
-                                <span class="preview">{{element.messages[element.messages.length - 1].date}}</span>
+                                <span class="preview">{{contact.messages[contact.messages.length - 1].date}}</span>
                             </div>
                         </li>
                     </ul>
@@ -75,8 +75,7 @@
                 </div>
                 <div class="conversation">
                     <ul>
-                        <li  :class="(message.status == 'received') ? 'received-message ' : 'sent-message' "
-                        v-for="message in contacts[contatore].messages">
+                        <li v-for="message in contacts[contatore].messages" :class="(message.status == 'received') ? 'received-message ' : 'sent-message' ">
                             <div :class="(message.status == 'received') ? 'mex' : 'my-mex' " >
                                 <p class="mex-text">{{message.text}}</p>
                                 <p class="when">{{message.date}}</p>

@@ -56,7 +56,6 @@ contacts: [
         }
       ],
     },
-  
     {
       name: "Samuele",
       avatar: "_3",
@@ -98,16 +97,19 @@ contacts: [
           date: "10/01/2020 16:50:00",
           text: "Va bene, andiamo al cinema",
           status: "received",
-        },
+        }
       ],
     },
   ],
 },
 methods: {
   change: function (index) {
-    this.contatore = index
+    this.contatore = index,
+    console.log(this.contatore);
+    
   },
   },
 }
 
   )
+  
