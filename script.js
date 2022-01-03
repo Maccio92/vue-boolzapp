@@ -9,8 +9,10 @@ Click sul contatto mostra la conversazione del contatto cliccato */
 /* Milestone 3
 Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando “enter” il testo viene aggiunto al thread sopra, come messaggio verde
 Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà un “ok” come risposta, che apparirà dopo 1 secondo.
+
 Milestone 4
 Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo “mar” rimangono solo Marco e Martina)
+
 Milestone 5
 Cancella messaggio: cliccando sul messaggio appare un menu a tendina che permette di cancellare il messaggio selezionato */
 
@@ -20,6 +22,7 @@ let app = new Vue(
     data:{
       contatore: 0,
       newMessage: '',
+      research: '',
 contacts: [
     {
       name: "Michele",
@@ -113,6 +116,8 @@ methods: {
     console.log(this.contatore);
     
   },
+
+  // Funzione per l'aggiunta di nuovi messaggi
   msg: function () {
     // Aggiunta della data
     dayjs.extend(window.dayjs_plugin_customParseFormat);
@@ -125,7 +130,7 @@ methods: {
           status: "sent"
       });
   }
-
+ 
   setTimeout(() => {
     this.contacts[this.contatore].messages.push({
         text: "Ok",
@@ -135,8 +140,17 @@ methods: {
 }, 1000);
   this.newMessage = '';
   },
-    
-}}
+
+  // Funzione per la ricerca dei contatti
+  findChat: function () {
+    this.contacts.forEach((contact) => {
+        if (contact.name.toLowerCase().includes(this.research.toLowerCase())) {
+            contact.visible = true;
+        } else {
+            contact.visible = false;
+        }
+    });
+}}}
   )
   
   

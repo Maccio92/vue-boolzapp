@@ -41,12 +41,12 @@
                 <div class="chats">
                     <div class="search-chat d-flex">
                         <i class="fas fa-search search-icon"></i>
-                        <input class="new" type="text" placeholder="Cerca o inizia nuova chat">
+                        <input v-model="research" @keyup="findChat" class="new" type="text" placeholder="Cerca o inizia nuova chat">
                     </div>
 
                     <ul class="users">
-                        <li @click="change(index)" v-for="(contact, index) in contacts" class="user-chat d-flex">
-                            <div class="user">
+                        <li v-if="contact.visible" @click="change(index)" v-for="(contact, index) in contacts" class="user-chat d-flex">
+                            <div  class="user">
                                 <img class="thumb" :src="`img/avatar${contact.avatar}.jpg`" alt="Avatar Michele">
                                 <div class="name">
                                     <h3>{{contact.name}}</h3>
