@@ -23,6 +23,7 @@ let app = new Vue(
       contatore: 0,
       newMessage: '',
       research: '',
+      active: false,
 contacts: [
     {
       name: "Michele",
@@ -150,7 +151,15 @@ methods: {
             contact.visible = false;
         }
     });
-}}}
+},
+show : function (index) {
+  this.active = true
+},
+deleteMsg: function (index) {
+  this.contacts[this.contatore].messages.splice(index , 1),
+  console.log(index)
+}
+}}
   )
   
   

@@ -50,11 +50,11 @@
                                 <img class="thumb" :src="`img/avatar${contact.avatar}.jpg`" alt="Avatar Michele">
                                 <div class="name">
                                     <h3>{{contact.name}}</h3>
-                                    <p  class="preview">{{contact.messages[contact.messages.length - 1].text}}</p>
+                                    <p v-if="contact.messages[contact.messages.length - 1] != null" class="preview">{{contact.messages[contact.messages.length - 1].text}}</p>
                                 </div>
                             </div>
                             <div class="date">
-                                <span class="preview">{{contact.messages[contact.messages.length - 1].date}}</span>
+                                <span v-if="contact.messages[contact.messages.length - 1] != null" class="preview">{{contact.messages[contact.messages.length - 1].date}}</span>
                             </div>
                         </li>
                     </ul>
@@ -79,10 +79,14 @@
                 </div>
                 <div class="conversation">
                     <ul>
-                        <li v-for="message in contacts[contatore].messages" :class="(message.status == 'received') ? 'received-message ' : 'sent-message' ">
+                        <li v-for="(message, index) in contacts[contatore].messages" :class="(message.status == 'received') ? 'received-message ' : 'sent-message' ">
                             <div :class="(message.status == 'received') ? 'mex' : 'my-mex' " >
                                 <p class="mex-text">{{message.text}}</p>
                                 <p class="when">{{message.date}}</p>
+                                <i @click="show(index)"  class="fas fa-chevron-down"></i>
+                                <div v-show="active" class="remove-menu">
+                                    <p @click="deleteMsg(index)" class="remove">Cancella messaggio</p>
+                                </div>
                             </div>
                         </li>
                     </ul>

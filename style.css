@@ -81,6 +81,16 @@ h3{
 .nav-icon{
     color: #b1b1b1;
 }
+.fa-chevron-down{
+    color: #b1b1b1;
+    position: absolute;
+    right: 8px;
+    top: 5px;
+    font-size: 0.8em;
+}
+.fa-chevron-down:hover{
+    cursor: pointer;
+}
 .bell{
     color: #8edafc;
 }
@@ -204,4 +214,14 @@ h3{
 }
 .new-mex{
     background-color: #eaeaea;
+}
+.remove-menu{
+    position: absolute;
+    right: 8px;
+    top: 20px;
+    padding: 10px;
+    background-color: chartreuse;
+}
+.remove{
+    cursor: pointer;
 }
